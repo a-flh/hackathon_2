@@ -5,6 +5,7 @@ import "../assets/common.css";
 import "../assets/Login.css";
 // import { MainContext } from "../contexts/MainContext";
 import logoapside from "../assets/img/logoapside.svg";
+import login from "../assets/img/login.jpg";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -15,16 +16,13 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/login/users`, {
+      .post(`${import.meta.env.VITE_BACKEND_URL}/login/members`, {
         email,
         password,
         withCredentials: true,
       })
       .then((res) => {
         if (res.status === 200) {
-          if (res.data.role === "ADMIN") {
-            localStorage.setItem("isAdmin", true);
-          }
           localStorage.setItem("userId", res.data.id);
           localStorage.setItem("loggedIn", true);
           navigate("/mon-compte");
@@ -48,7 +46,7 @@ function Login() {
       </Link>
       <div className="login-form-container">
         <h2>
-          Bonjour ! <span>Envie d'une nouvelle astuce ?</span>
+          Bonjour ! <span>Un nouveau projet ?</span>
         </h2>
         <form onSubmit={handleLogin} className="login-content">
           <input
@@ -84,16 +82,12 @@ function Login() {
         </p>
       </div>
       <div className="login-image-container">
-        <img className="login-image" src={logoapside} alt="happyWoman" />
+        <img className="login-image" src={login} alt="happyWoman" />
         <div className="login-image-text">
           <h1>
-            Optimisez
+            Partagez
             <br />
-            votre
-            <br />
-            pouvoir
-            <br />
-            d'achat
+            vos idées
           </h1>
         </div>
       </div>

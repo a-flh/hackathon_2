@@ -10,7 +10,7 @@ function Logout() {
   const handleLogout = (e) => {
     e.preventDefault();
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/logout/users`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/logout/members`, {
         withCredentials: true,
       })
       .then((res) => {

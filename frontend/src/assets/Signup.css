@@ -49,7 +49,8 @@
   font-size: 1.1rem;
 }
 
-.signup-container input {
+.signup-container input,
+select {
   height: 2.5rem;
   margin: 0.5rem;
   font-size: 1.1rem;
@@ -68,7 +69,7 @@
 
 .signup-button-container button {
   height: 2.6rem;
-  width: 8rem;
+  width: 10rem;
   font-size: 1.2rem;
   background-color: var(--navbar-color);
   border-radius: 20px;
