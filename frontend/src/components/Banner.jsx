@@ -12,6 +12,11 @@ export default function Banner() {
       </div>
 
       <div className="container-banner">
+        <h1>
+          {" "}
+          L'outil collaboratif qui rassemble tous les APSIDIENS au niveau
+          National
+        </h1>
         {localStorage.getItem("loggedIn") ? (
           <div className="btn-div">
             <Logout />
@@ -24,7 +29,7 @@ export default function Banner() {
                 type="button"
                 /* onClick={handleClick} */
               >
-                Devenir membre
+                S'inscrire
               </button>
             </NavLink>
             <NavLink to="/connexion" className="items">
