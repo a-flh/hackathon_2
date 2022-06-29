@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
 --
--- Client :  localhost
--- Généré le :  Jeu 26 Octobre 2017 à 13:53
--- Version du serveur :  5.7.19-0ubuntu0.16.04.1
--- Version de PHP :  7.0.22-0ubuntu0.16.04.1
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mer. 29 juin 2022 à 14:58
+-- Version du serveur : 8.0.28
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,47 +18,59 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `simple-mvc`
+-- Base de données : `apside`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `item`
+-- Structure de la table `member`
 --
 
-CREATE TABLE `item` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+DROP TABLE IF EXISTS `member`;
+CREATE TABLE IF NOT EXISTS `member` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `firstname` varchar(250) NOT NULL,
+  `lastname` varchar(250) NOT NULL,
+  `phoneNumber` varchar(250) NOT NULL,
+  `email` varchar(250) NOT NULL,
+  `password` varchar(250) NOT NULL,
+  `skills` varchar(250) NOT NULL,
+  `agency` varchar(250) NOT NULL,
+  `projectId` int NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  KEY `agencyId` (`projectId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+
+-- --------------------------------------------------------
 
 --
--- Contenu de la table `item`
+-- Structure de la table `project`
 --
 
-INSERT INTO `item` (`id`, `title`) VALUES
-(1, 'Stuff'),
-(2, 'Doodads');
+DROP TABLE IF EXISTS `project`;
+CREATE TABLE IF NOT EXISTS `project` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(250) NOT NULL,
+  `customer` varchar(250) DEFAULT NULL,
+  `description` text NOT NULL,
+  `startDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `state` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Index pour les tables exportées
---
-
---
--- Index pour la table `item`
---
-ALTER TABLE `item`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT pour les tables exportées
+-- Contraintes pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT pour la table `item`
+-- Contraintes pour la table `member`
 --
-ALTER TABLE `item`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `member`
+  ADD CONSTRAINT `member_ibfk_1` FOREIGN KEY (`projectId`) REFERENCES `project` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
