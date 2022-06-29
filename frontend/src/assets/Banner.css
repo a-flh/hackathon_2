@@ -1,0 +1,48 @@
+.container-banner {
+  /*background-image: url(/src/assets/img/bannerapside.svg);*/
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  background-size: cover;
+}
+
+.container-banner h1 {
+  font-size: -webkit-xxx-large;
+  position: relative;
+  top: 5rem;
+  color: var(--connexion-color);
+  width: 50%;
+  margin: auto;
+}
+
+.btn-div {
+  position: absolute;
+  right: 12rem;
+  top: 15rem;
+  height: 16rem;
+  width: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 5rem;
+}
+
+.btn-div button {
+  height: 4rem;
+  width: 15rem;
+  font-size: 1.2rem;
+  background-color: var(--navbar-color);
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  margin: 1rem;
+}
+
+.div-logo img {
+  height: 12rem;
+  position: absolute;
+  margin: 0.5rem;
+}
