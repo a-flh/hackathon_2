@@ -1,0 +1,25 @@
+.container-banner {
+  background-image: url(./img/logoapside.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 20rem;
+}
+
+.btn-div {
+  position: absolute;
+  right: 1rem;
+  top: 15rem;
+  border: solid;
+  height: 5rem;
+  width: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.div-logo {
+  height: 4rem;
+  position: absolute;
+  margin: 0.5rem;
+}
