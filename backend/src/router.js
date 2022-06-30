@@ -25,5 +25,6 @@ router.put("/members/:id", MembersController.edit);
 router.post("/add/projects", ProjectController.add);
 router.get("/projects", ProjectController.browse);
 router.get("/projects/:id", ProjectController.read);
+router.delete("/projects/:id", ProjectController.delete);
 
 module.exports = router;

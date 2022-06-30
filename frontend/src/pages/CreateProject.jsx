@@ -13,8 +13,8 @@ export default function CreateProject() {
   const [name, setName] = useState("");
   const [customer, setCustomer] = useState("");
   const [description, setDescription] = useState("");
-  const startDate = Moment().format("DD-MM-YYYY");
   const [modal, setModal] = useState(false);
+  const startDate = Moment().format("DD-MM-YYYY");
 
   const handleRegisterProject = (e) => {
     e.preventDefault();
@@ -25,12 +25,19 @@ export default function CreateProject() {
         description,
         startDate,
       })
-      .then((res) => console.warn(res))
+      .then(() => {
+        setTimeout(() => {
+          setModal(true);
+        }, 500);
+      })
       .catch((err) => console.error(err));
   };
 
   const toggleModal = () => {
     setModal(false);
+    setName("");
+    setCustomer("");
+    setDescription("");
   };
 
   return (

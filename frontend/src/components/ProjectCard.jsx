@@ -2,9 +2,8 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { MainContext } from "../contexts/MainContext";
 
-function UserCard({ projects, setProjects, project }) {
+function ProjectCard({ projects, setProjects, project }) {
   const { setDeleteModal } = useContext(MainContext);
-
   const handleDelete = (e) => {
     return window.confirm("Voulez-vous vraiment supprimer ce projet ?")
       ? axios
@@ -22,7 +21,7 @@ function UserCard({ projects, setProjects, project }) {
   return (
     <div>
       <p>Nom: {project.name}</p>
-      <p>Client {project.customer}</p>
+      {project.customer && <p>Client: {project.customer}</p>}
       <p>Description: {project.description}</p>
       <p>Date de création: {project.startDate}</p>
       <p>Avancée: {project.state}</p>
@@ -33,4 +32,4 @@ function UserCard({ projects, setProjects, project }) {
   );
 }
 
-export default UserCard;
+export default ProjectCard;
