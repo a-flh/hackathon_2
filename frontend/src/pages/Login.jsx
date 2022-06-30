@@ -46,7 +46,7 @@ function Login() {
       </Link>
       <div className="login-form-container">
         <h2>
-          Bonjour ! <span>Un nouveau projet ?</span>
+          Bonjour ! <span> Connectez-vous! </span>
         </h2>
         <form onSubmit={handleLogin} className="login-content">
           <input
