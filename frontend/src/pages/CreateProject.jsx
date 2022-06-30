@@ -4,19 +4,17 @@ import "../assets/common.css";
 import "../assets/CreateProject.css";
 
 export default function CreateProject() {
-  const [nameproject, setNameproject] = useState("");
+  const [name, setName] = useState("");
   const [customer, setCustomer] = useState("");
   const [description, setDescription] = useState("");
-  const [stateproject, setStateproject] = useState("");
 
   const handleRegisterProject = (e) => {
     e.preventDefault();
     axios
-      .post(`${import.meta.env.VITE_BACKEND_URL}/auth/members/projects`, {
-        nameproject,
+      .post(`${import.meta.env.VITE_BACKEND_URL}/add/projects`, {
+        name,
         customer,
         description,
-        stateproject,
       })
       .then((res) => console.warn(res))
       .catch((err) => console.error(err));
@@ -32,9 +30,9 @@ export default function CreateProject() {
         <input
           type="text"
           placeholder="Nom"
-          value={nameproject}
+          value={name}
           required
-          onChange={(e) => setNameproject(e.target.value)}
+          onChange={(e) => setName(e.target.value)}
         />
         <input
           type="text"
@@ -51,18 +49,6 @@ export default function CreateProject() {
           required
           onChange={(e) => setDescription(e.target.value)}
         />
-        <select
-          name="state"
-          id="state-select"
-          onChange={(e) => setStateproject(e.target.value)}
-        >
-          <option value="" required="">
-            Avancement du projet
-          </option>
-          <option value="conception">En phase de conception</option>
-          <option value="Pret">Prêt</option>
-          <option value="production">En production</option>
-        </select>
         <div className="prject-button-container">
           <button type="submit">VALIDER</button>
         </div>
