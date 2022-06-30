@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import AdminDashboard from "@pages/AdminDashboard";
 import Page404 from "@pages/Page404";
-import UserHome from "./pages/UserHome";
+import CreateProject from "@pages/CreateProject";
+import AllProjectsPage from "@pages/AllProjectsPage";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
@@ -14,9 +14,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/inscription" element={<SignUp />} />
         <Route path="/connexion" element={<Login />} />
-        <Route path="/mon-compte" element={<UserHome />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="*" element={<Page404 />} />
+        <Route path="/proposition-projet" element={<CreateProject />} />
+        <Route path="/projets" element={<AllProjectsPage />} />
       </Routes>
     </div>
   );

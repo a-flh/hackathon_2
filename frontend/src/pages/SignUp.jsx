@@ -44,7 +44,7 @@ function SignUp() {
             setIsFirstConnection(true);
             localStorage.setItem("userId", res.data.id);
             localStorage.setItem("loggedIn", true);
-            navigate("/mon-compte");
+            navigate("/projets");
           }
         })
         .catch((err) => {

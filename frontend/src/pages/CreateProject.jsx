@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import axios from "axios";
 import "../assets/common.css";
 import "../assets/CreateProject.css";
+import Logout from "@components/Logout";
+import Moment from "moment";
+import Modal from "@components/Modal";
 
 export default function CreateProject() {
   const [name, setName] = useState("");
   const [customer, setCustomer] = useState("");
   const [description, setDescription] = useState("");
+  const startDate = Moment().format("DD-MM-YYYY");
+  const [modal, setModal] = useState(false);
 
   const handleRegisterProject = (e) => {
     e.preventDefault();
@@ -15,9 +20,14 @@ export default function CreateProject() {
         name,
         customer,
         description,
+        startDate,
       })
       .then((res) => console.warn(res))
       .catch((err) => console.error(err));
+  };
+
+  const toggleModal = () => {
+    setModal(false);
   };
 
   return (
@@ -36,12 +46,11 @@ export default function CreateProject() {
         />
         <input
           type="text"
-          placeholder="Client"
+          placeholder="Client (facultatif)"
           value={customer}
           required
           onChange={(e) => setCustomer(e.target.value)}
         />
-
         <textarea
           type="email"
           placeholder="Decrivez votre projet"
@@ -53,6 +62,13 @@ export default function CreateProject() {
           <button type="submit">VALIDER</button>
         </div>
       </form>
+      {modal && (
+        <Modal
+          toggleModal={toggleModal}
+          modalMessage="Votre projet a bien été créé !"
+        />
+      )}
+      <Logout />
     </div>
   );
 }
