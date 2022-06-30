@@ -64,7 +64,6 @@ export default function CreateProject() {
             type="text"
             placeholder="Client (facultatif)"
             value={customer}
-            required
             onChange={(e) => setCustomer(e.target.value)}
           />
           <textarea
@@ -82,12 +81,6 @@ export default function CreateProject() {
           {" "}
           Consulter les autres projets
         </NavLink>
-        {modal && (
-          <Modal
-            toggleModal={toggleModal}
-            modalMessage="Votre projet a bien été créé !"
-          />
-        )}
         <Logout />
       </div>
       <div className="login-image-container">
@@ -100,6 +93,12 @@ export default function CreateProject() {
           </h1>
         </div>
       </div>
+      {modal && (
+        <Modal
+          toggleModal={toggleModal}
+          modalMessage="Votre projet a bien été créé !"
+        />
+      )}
     </div>
   );
 }

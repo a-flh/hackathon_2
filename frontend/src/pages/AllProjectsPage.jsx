@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import ProjectCard from "@components/ProjectCard";
 import "../assets/common.css";
-import "../assets/CreateProject.css";
+import "../assets/Project.css";
 import { NavLink } from "react-router-dom";
 import Logout from "@components/Logout";
 import Modal from "@components/Modal";
@@ -32,19 +32,25 @@ export default function AllProjectsPage() {
 
   return (
     <div className="allproject-form-container">
-      <p>
-        Une idée de projet ?&nbsp;
-        <NavLink to="/proposition-projet">C'est par ici !</NavLink>
-      </p>
       <Logout />
-      <h2>Les projets en cours</h2>
-      <input
-        type="text"
-        placeholder="Rechercher un projet"
-        value={searchProjects}
-        onChange={(e) => setSearchProjects(e.target.value)}
-      />
-      <ul>
+      <div className="title-container">
+        <h1>Projets en cours</h1>
+      </div>
+      <div className="searchbar-container">
+        <input
+          type="text"
+          placeholder="Rechercher un projet"
+          value={searchProjects}
+          onChange={(e) => setSearchProjects(e.target.value)}
+        />
+        <p>
+          Une idée de projet ?&nbsp;
+          <NavLink to="/proposition-projet" className="link-other-pages">
+            C'est par ici !
+          </NavLink>
+        </p>
+      </div>
+      <ul className="project-super-container">
         {projects &&
           projects
             /* .sort((a, b) =>
