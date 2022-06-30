@@ -2,15 +2,15 @@ import axios from "axios";
 import React, { useContext } from "react";
 import { MainContext } from "../contexts/MainContext";
 
-function UserCard({ users, setUsers, user }) {
+function UserCard({ projects, setProjects, project }) {
   const { setDeleteModal } = useContext(MainContext);
 
   const handleDelete = (e) => {
-    return window.confirm("Voulez-vous vraiment supprimer cet utilisateur ?")
+    return window.confirm("Voulez-vous vraiment supprimer ce projet ?")
       ? axios
-          .delete(`${import.meta.env.VITE_BACKEND_URL}/users/${user.id}`)
+          .delete(`${import.meta.env.VITE_BACKEND_URL}/projects/${project.id}`)
           .then(() => {
-            setUsers(users.filter((u) => u !== user));
+            setProjects(projects.filter((u) => u !== project));
             setTimeout(() => {
               setDeleteModal(true);
             }, 1000);
@@ -21,13 +21,13 @@ function UserCard({ users, setUsers, user }) {
 
   return (
     <div>
-      <p>
-        Nom: {user.firstname} {user.lastname}
-      </p>
-      <p>Adresse email: {user.email}</p>
-      <p>Téléphone: {user.phoneNumber}</p>
+      <p>Nom: {project.name}</p>
+      <p>Client {project.customer}</p>
+      <p>Description: {project.description}</p>
+      <p>Date de création: {project.startDate}</p>
+      <p>Avancée: {project.state}</p>
       <button type="button" onClick={handleDelete}>
-        Supprimer utilisateur
+        Clôturer ce projet
       </button>
     </div>
   );

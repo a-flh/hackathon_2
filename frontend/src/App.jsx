@@ -14,9 +14,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/inscription" element={<SignUp />} />
         <Route path="/connexion" element={<Login />} />
-        <Route path="*" element={<Page404 />} />
         <Route path="/proposition-projet" element={<CreateProject />} />
         <Route path="/projets" element={<AllProjectsPage />} />
+        <Route path="*" element={<Page404 />} />
       </Routes>
     </div>
   );

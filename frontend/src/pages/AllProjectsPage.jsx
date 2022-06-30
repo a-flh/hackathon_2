@@ -1,48 +1,68 @@
 import React, { useState, useEffect, useContext } from "react";
-import Logout from "@components/Logout";
-import { NavLink } from "react-router-dom";
-import Modal from "@components/Modal";
+import axios from "axios";
+import UserCard from "@components/UserCard";
+import "../assets/common.css";
+import "../assets/CreateProject.css";
 import { MainContext } from "../contexts/MainContext";
 
 export default function AllProjectsPage() {
-  const {
-    isFirstConnection,
-    setIsFirstConnection,
-    /* userData,
-    setUserData, */
-  } = useContext(MainContext);
-  const [modal, setModal] = useState(false);
+  const [projects, setProjects] = useState("");
+  const [searchprojects, setSearchprojects] = useState("");
+  const { Modal, setModal } = useContext(MainContext);
 
-  const toggleModal = () => {
-    setModal(false);
-    setIsFirstConnection(false);
+  const getProject = async () => {
+    await axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/projects`, {
+        projects,
+      })
+      .then((res) => setProjects(res.data))
+      .catch((err) => console.error(err));
   };
 
   useEffect(() => {
-    /* if (!localStorage.getItem("loggedIn")) {
-      navigate("/connexion");
-    } */
-    if (isFirstConnection) {
-      setTimeout(() => {
-        setModal(true);
-      }, 1000);
-    }
+    getProject();
   }, []);
 
   return (
-    <div>
-      Hello projects
-      <p>
-        Vous souhaitez partager une idée ou un projet ?{" "}
-        <NavLink to="/proposition-projet">C'est par ici !</NavLink>
-      </p>
-      <Logout />
-      {modal && (
-        <Modal
-          toggleModal={toggleModal}
-          modalMessage="Votre inscription a bien été prise en compte !"
-        />
-      )}
+    <div className="allproject-form-container">
+      <h2>Les projets en cours</h2>
+      <input
+        type="text"
+        placeholder="Rechercher un projet"
+        value={searchprojects}
+        onChange={(e) => setSearchprojects(e.target.value)}
+      />
+      <ul>
+        {projects &&
+          projects
+            .sort((a, b) =>
+              a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1
+            )
+            .filter(
+              (project) =>
+                project.name
+                  .toLowerCase()
+                  .includes(searchprojects.toLowerCase()) ||
+                project.name
+                  .toLowerCase()
+                  .includes(searchprojects.toLowerCase()) ||
+                project.customers
+                  .toLowerCase()
+                  .includes(searchprojects.toLowerCase()) ||
+                project.description.includes(searchprojects)
+            )
+            .map((project) => {
+              return (
+                <li key={project.id}>
+                  <UserCard
+                    project={project}
+                    setProjects={setProjects}
+                    projects={projects}
+                  />
+                </li>
+              );
+            })}
+      </ul>
     </div>
   );
 }
