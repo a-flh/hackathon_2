@@ -1,14 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UserCard from "@components/UserCard";
 import "../assets/common.css";
 import "../assets/CreateProject.css";
-import { MainContext } from "../contexts/MainContext";
 
 export default function AllProjectsPage() {
   const [projects, setProjects] = useState("");
   const [searchprojects, setSearchprojects] = useState("");
-  const { Modal, setModal } = useContext(MainContext);
 
   const getProject = async () => {
     await axios

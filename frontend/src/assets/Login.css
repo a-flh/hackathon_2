@@ -80,6 +80,20 @@
   font-weight: bold;
 }
 
+.logout-button-container button {
+  height: 2.4rem;
+  width: 11.4rem;
+  font-size: 1.2rem;
+  background-color: var(--connexion-color);
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  position: relative;
+  bottom: 38rem;
+  left: 6rem;
+}
+
 .login-button-container button:hover {
   background-color: white;
   border-radius: 20px;
@@ -129,5 +143,12 @@
 
   .login-form-container {
     width: 100vw;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logout-button-container button {
+    bottom: 39rem;
+    left: 11rem;
   }
 }
