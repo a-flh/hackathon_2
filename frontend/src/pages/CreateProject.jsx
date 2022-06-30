@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
+import logoapside from "../assets/img/logoapside.svg";
 import "../assets/common.css";
 import "../assets/CreateProject.css";
 
@@ -21,8 +23,11 @@ export default function CreateProject() {
   };
 
   return (
-    <div className="signup-form-container">
-      <h2>Bienvenue dans l'équipe !</h2>
+    <div className="createproject-form-container">
+      <Link to="/">
+        <img src={logoapside} className="login-logo" alt="sellect-logo" />
+      </Link>
+      <h2>Création de projet</h2>
       <form
         className="createproject-form-content"
         onSubmit={handleRegisterProject}
@@ -49,7 +54,7 @@ export default function CreateProject() {
           required
           onChange={(e) => setDescription(e.target.value)}
         />
-        <div className="prject-button-container">
+        <div className="project-button-container">
           <button type="submit">VALIDER</button>
         </div>
       </form>

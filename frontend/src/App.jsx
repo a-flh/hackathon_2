@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import AdminDashboard from "@pages/AdminDashboard";
 import Page404 from "@pages/Page404";
+import CreateProject from "@pages/CreateProject";
 import UserHome from "./pages/UserHome";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -17,6 +18,7 @@ function App() {
         <Route path="/mon-compte" element={<UserHome />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="*" element={<Page404 />} />
+        <Route path="/createproject" element={<CreateProject />} />
       </Routes>
     </div>
   );
