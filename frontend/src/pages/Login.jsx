@@ -25,7 +25,7 @@ function Login() {
         if (res.status === 200) {
           localStorage.setItem("userId", res.data.id);
           localStorage.setItem("loggedIn", true);
-          navigate("/mon-compte");
+          navigate("/projets");
         }
       })
       .catch((err) => {

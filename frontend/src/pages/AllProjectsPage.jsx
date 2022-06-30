@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import UserDeleteModal from "@components/UserDeleteModal";
 import UserCard from "@components/UserCard";
 import "../assets/common.css";
 import "../assets/CreateProject.css";
@@ -9,7 +8,7 @@ import { MainContext } from "../contexts/MainContext";
 export default function AllProjectsPage() {
   const [projects, setProjects] = useState("");
   const [searchprojects, setSearchprojects] = useState("");
-  const { deleteModal, setDeleteModal } = useContext(MainContext);
+  const { Modal, setModal } = useContext(MainContext);
 
   const getProject = async () => {
     await axios
@@ -23,10 +22,6 @@ export default function AllProjectsPage() {
   useEffect(() => {
     getProject();
   }, []);
-
-  const toggleModal = () => {
-    setDeleteModal(false);
-  };
 
   return (
     <div className="allproject-form-container">
@@ -68,7 +63,6 @@ export default function AllProjectsPage() {
               );
             })}
       </ul>
-      {deleteModal && <UserDeleteModal toggleModal={toggleModal} />}
     </div>
   );
 }
