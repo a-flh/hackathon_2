@@ -1,9 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import "../assets/Page404.css";
 
 function Page404() {
   return (
-    <div>
-      <p>Erreur 404</p>
+    <div className="error-page" title="404">
+      <p> Error 404 </p>
+      <NavLink to="/" className="link-home">
+        {" "}
+        Page d'accueil
+      </NavLink>
     </div>
   );
 }
