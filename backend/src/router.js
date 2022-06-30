@@ -1,6 +1,10 @@
 const express = require("express");
 
-const { ItemController, MembersController } = require("./controllers");
+const {
+  ItemController,
+  MembersController,
+  ProjectController,
+} = require("./controllers");
 
 const router = express.Router();
 
@@ -17,5 +21,9 @@ router.get("/logout/members", MembersController.logout);
 router.get("/members/:id", MembersController.read);
 router.delete("/members/:id", MembersController.delete);
 router.put("/members/:id", MembersController.edit);
+
+router.post("/add/projects", ProjectController.add);
+router.get("/projects", ProjectController.browse);
+router.get("/projects/:id", ProjectController.read);
 
 module.exports = router;
