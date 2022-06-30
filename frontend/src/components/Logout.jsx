@@ -24,7 +24,7 @@ function Logout() {
   };
 
   return (
-    <div>
+    <div className="logout-button-container">
       <button type="button" className="button-member" onClick={handleLogout}>
         Se déconnecter
       </button>
