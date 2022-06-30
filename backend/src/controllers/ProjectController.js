@@ -52,14 +52,14 @@ class ProjectController {
   };
 
   static add = (req, res) => {
-    const project = req.body;
+    const { name, customer, description, startDate } = req.body;
 
     // TODO validations (length, format...)
 
     models.project
-      .insert(project)
+      .insert({ name, customer, description, startDate, state: "Prêt" })
       .then(([result]) => {
-        res.status(201).send({ ...project, id: result.insertId });
+        res.status(201).send({ ...req.body, id: result.insertId });
       })
       .catch((err) => {
         console.error(err);
