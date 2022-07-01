@@ -26,5 +26,6 @@ router.post("/add/projects", ProjectController.add);
 router.get("/projects", ProjectController.browse);
 router.get("/projects/:id", ProjectController.read);
 router.delete("/projects/:id", ProjectController.delete);
+router.post("/join/projects/:id", ProjectController.edit);
 
 module.exports = router;
