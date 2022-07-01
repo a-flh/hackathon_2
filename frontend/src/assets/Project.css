@@ -46,7 +46,7 @@
   padding-top: 1.5rem;
   display: flex;
   justify-content: space-around;
-  width: 100vw;
+  flex-direction: column;
 }
 
 .project-entitled {
@@ -63,6 +63,7 @@
 
 .searchbar-container input {
   font-size: 1rem;
+  border-radius: 1rem;
 }
 
 .project-header {
@@ -72,4 +73,15 @@
 
 .title-container h1 {
   color: rgb(69, 69, 126);
+}
+
+.btn-chat button {
+  height: 2.6rem;
+  width: 11.4rem;
+  font-size: 1.2rem;
+  background-color: var(--navbar-color);
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-weight: bold;
 }

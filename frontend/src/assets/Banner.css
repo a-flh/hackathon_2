@@ -1,5 +1,6 @@
 .container-banner {
-  background-image: url(/src/assets/img/bannerapside.jpg);
+  background-image: url(/src/assets/img/bannerapside2.jpg);
+  /* background-color: var(--page-background-color); */
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
@@ -11,9 +12,9 @@
   top: 9rem;
   width: 79%;
   margin: auto;
-  -webkit-text-stroke-width: 2px;
   font-family: arial;
   color: var(--navbar-color);
+  font-weight: 900;
 }
 
 .btn-div {
@@ -52,5 +53,9 @@
   .btn-div {
     top: 15rem;
     width: 40%;
+  }
+
+  .container-banner h1 {
+    font-size: -webkit-xxx-large;
   }
 }

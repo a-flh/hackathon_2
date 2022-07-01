@@ -32,6 +32,11 @@ export default function AllProjectsPage() {
 
   return (
     <div className="allproject-form-container">
+      <NavLink to="/chat" className="btn-chat">
+        <button className="button-member" type="button">
+          CHAT
+        </button>
+      </NavLink>
       <Logout />
       <div className="title-container">
         <h1>Projets en cours</h1>
