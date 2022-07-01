@@ -30,19 +30,22 @@ class ProjectController {
   };
 
   static edit = (req, res) => {
-    const project = req.body;
+    const { currentMembers } = req.body;
 
     // TODO validations (length, format...)
 
-    project.id = parseInt(req.params.id, 10);
+    const id = parseInt(req.params.id, 10);
 
     models.project
-      .update(project)
+      .update({ currentMembers, id })
       .then(([result]) => {
         if (result.affectedRows === 0) {
           res.sendStatus(404);
         } else {
-          res.sendStatus(204);
+          res.status(200).json({
+            status: "success",
+            member: `${currentMembers}`,
+          });
         }
       })
       .catch((err) => {
@@ -52,12 +55,19 @@ class ProjectController {
   };
 
   static add = (req, res) => {
-    const { name, customer, description, startDate } = req.body;
+    const { name, customer, description, startDate, currentMembers } = req.body;
 
     // TODO validations (length, format...)
 
     models.project
-      .insert({ name, customer, description, startDate, state: "Prêt" })
+      .insert({
+        name,
+        customer,
+        description,
+        startDate,
+        state: "Prêt",
+        currentMembers,
+      })
       .then(([result]) => {
         res.status(201).send({ ...req.body, id: result.insertId });
       })
