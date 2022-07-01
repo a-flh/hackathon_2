@@ -1,10 +1,8 @@
 import axios from "axios";
-import React, { useContext } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { MainContext } from "../contexts/MainContext";
 
 function Logout() {
-  const { setUserData } = useContext(MainContext);
   const navigate = useNavigate();
 
   const handleLogout = (e) => {
@@ -16,7 +14,6 @@ function Logout() {
       .then((res) => {
         if (res.status === 200) {
           localStorage.clear();
-          setUserData(null);
           navigate("/");
         }
       })

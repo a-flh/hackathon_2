@@ -1,0 +1,75 @@
+.project-container {
+  /*border: 3px solid;
+  border-radius: 10px;*/
+  background-color: white;
+  flex: 1 0 20%;
+  min-width: 180px;
+  max-width: 280px;
+  border: 2px solid var(--connexion-color);
+  margin: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--navbar-color);
+}
+
+.project-container p {
+  padding: 8px;
+  color: var(--navbar-color);
+}
+
+.project-container button {
+  background-color: rgb(69, 69, 126);
+  color: white;
+  width: 6rem;
+  height: 2rem;
+  font-size: 1rem;
+  align-items: center;
+}
+
+.project-super-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding-top: 2rem;
+}
+
+.allproject-form-container {
+  background-color: var(--page-background-color);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchbar-container {
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-around;
+  width: 100vw;
+}
+
+.project-entitled {
+  color: green;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.button-container {
+  padding-top: 0.8rem;
+  display: flex;
+  justify-content: space-around;
+}
+
+.searchbar-container input {
+  font-size: 1rem;
+}
+
+.project-header {
+  color: rgb(221, 78, 78);
+  font-weight: bold;
+}
+
+.title-container h1 {
+  color: rgb(69, 69, 126);
+}
